@@ -10,7 +10,6 @@ const Index = () => {
         </div>
         <h1>FilmFlix</h1>
 
-        <h4>Jbr242</h4>
         <div className="card">
             <p>
                 <Button disabled={!!user} component={Link} variant="contained" to={user ? '/films' : '/login'} style={{ marginRight: '10px' }}>
