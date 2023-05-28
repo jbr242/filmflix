@@ -53,7 +53,7 @@ const Film = () => {
 
     useEffect(() => {
         const getFilm = () => {
-            axios.get("http://localhost:4941/api/v1/films/" + filmId)
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/" + filmId)
                 .then(
                     (response) => {
                         setErrorFlag(false);
@@ -71,7 +71,7 @@ const Film = () => {
         }
 
         const getGenres = () => {
-            axios.get("http://localhost:4941/api/v1/films/genres")
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
                 .then(
                     (response) => {
                         setErrorFlag(false);
@@ -86,7 +86,7 @@ const Film = () => {
         }
         const hasUserReviewed = async () => {
             try {
-                const reviewsResponse = await axios.get("http://localhost:4941/api/v1/films/"+filmId + "/reviews");
+                const reviewsResponse = await axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/"+filmId + "/reviews");
                 const reviews = reviewsResponse.data;
                 if(reviews.some((review: any) => review.reviewerId === user?.id)) {
                     setUserHasReviewed(true)
@@ -127,7 +127,7 @@ const Film = () => {
                 }
             };
 
-            await axios.post("http://localhost:4941/api/v1/films/" + filmId + '/reviews', {
+            await axios.post("https://seng365-reference-production.up.railway.app/api/v1/films/" + filmId + '/reviews', {
                 "rating": rating * 2,
                 "review": reviewText
             }, reviewPostConfig);
@@ -159,7 +159,7 @@ const Film = () => {
                                     height="auto"
                                     width="100%"
                                     sx={{objectFit: "cover", maxHeight: "20vh"}}
-                                    image={"http://localhost:4941/api/v1/films/" + film?.filmId + "/image"}
+                                    image={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film?.filmId + "/image"}
                                     alt="Auction hero"
                                 />
                             </Grid>
@@ -183,7 +183,7 @@ const Film = () => {
                                             <ListItemAvatar>
                                                 <Avatar
                                                     alt={film?.directorFirstName}
-                                                    src={"http://localhost:4941/api/v1/users/" + film?.directorId + "/image"}
+                                                    src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + film?.directorId + "/image"}
                                                 />
                                             </ListItemAvatar>
                                             <ListItemText>

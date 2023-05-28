@@ -58,7 +58,7 @@ export default function PublishFilm() {
                 setErrorFlag(false);
                 setErrorMessage("");
 
-                const registerResult = await axios.post("http://localhost:4941/api/v1/films", {
+                const registerResult = await axios.post("https://seng365-reference-production.up.railway.app/api/v1/films", {
                     "title": data.get('title'),
                     "description": data.get('description'),
                     "releaseDate": releaseDate,
@@ -68,7 +68,7 @@ export default function PublishFilm() {
                 }, movieRegisterConfig);
                 const {filmId} = registerResult.data;
                 if (selectedImage) {
-                    await axios.put("http://localhost:4941/api/v1/films/" + filmId + "/image", selectedImage, movieImageConfig)
+                    await axios.put("https://seng365-reference-production.up.railway.app/api/v1/films/" + filmId + "/image", selectedImage, movieImageConfig)
                 }
                 navigate("/films/" + filmId);
             } catch (error: any) {

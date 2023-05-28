@@ -51,7 +51,7 @@ export default function Register() {
         try {
             setErrorFlag(false);
             setErrorMessage("");
-            const registerResult = await axios.post("http://localhost:4941/api/v1/users/register", {
+            const registerResult = await axios.post("https://seng365-reference-production.up.railway.app/api/v1/users/register", {
                 "email": data.get('email'),
                 "firstName": data.get('firstName'),
                 "lastName": data.get('lastName'),
@@ -59,11 +59,11 @@ export default function Register() {
             });
             const {userId} = registerResult.data;
 
-            const loginResult = await axios.post("http://localhost:4941/api/v1/users/login", {
+            const loginResult = await axios.post("https://seng365-reference-production.up.railway.app/api/v1/users/login", {
                 "email": data.get('email'),
                 "password": data.get('password'),
             });
-            const userResult = await axios.get("http://localhost:4941/api/v1/users/" + userId);
+            const userResult = await axios.get("https://seng365-reference-production.up.railway.app/api/v1/users/" + userId);
 
             const {data: userInfo} = userResult;
             const {token: authToken} = loginResult.data;
@@ -74,7 +74,7 @@ export default function Register() {
                 }
             };
             if (selectedImage) {
-                await axios.put("http://localhost:4941/api/v1/users/" + userId + "/image", selectedImage, userImageConfig)
+                await axios.put("https://seng365-reference-production.up.railway.app/api/v1/users/" + userId + "/image", selectedImage, userImageConfig)
             }
             setUser({...userInfo, authToken, id:userId, email:data.get('email')});
             navigate("/films");

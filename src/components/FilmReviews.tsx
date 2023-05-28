@@ -21,7 +21,7 @@ export default function FilmReviews({ id, timestamp }: Props) {
 
     useEffect(() => {
         const getFilmReviews = async () => {
-            const reviews = await axios.get("http://localhost:4941/api/v1/films/" + id + "/reviews")
+            const reviews = await axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/" + id + "/reviews")
             setReviews(reviews.data)
         }
         if (id === undefined) return;
@@ -46,7 +46,7 @@ export default function FilmReviews({ id, timestamp }: Props) {
                 <React.Fragment key={review.reviewerId}>
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar alt={review.reviewerFirstName} src={"http://localhost:4941/api/v1/users/" + review.reviewerId + "/image"} />
+                            <Avatar alt={review.reviewerFirstName} src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + review.reviewerId + "/image"} />
                         </ListItemAvatar>
                         <ListItemText
                             primary={review.review}

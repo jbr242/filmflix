@@ -36,7 +36,7 @@ export default function EditFilm() {
 
     useEffect(() => {
         const getFilm = () => {
-            axios.get("http://localhost:4941/api/v1/films/" + filmId)
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/" + filmId)
                 .then(
                     (response) => {
                         setErrorFlag(false);
@@ -89,7 +89,7 @@ export default function EditFilm() {
                 console.log(data.get('ageRating'));
                 setErrorFlag(false);
                 setErrorMessage("");
-                await axios.patch("http://localhost:4941/api/v1/films/" + film?.filmId, {
+                await axios.patch("https://seng365-reference-production.up.railway.app/api/v1/films/" + film?.filmId, {
                     title: data.get('title') !== film?.title ? data.get('title') : undefined,
                     description: data.get('description') !== film?.description ? data.get('description') : undefined,
                     releaseDate: releaseDate && new Date(releaseDate) > new Date() ? releaseDate : undefined,
@@ -98,7 +98,7 @@ export default function EditFilm() {
                     ageRating: data.get('ageRating') !== '' ? (data.get('ageRating') !== film?.ageRating ? data.get('ageRating') : undefined) : 'TBC'
                 }, moviePatchConfig);
                 if (selectedImage) {
-                    await axios.put("http://localhost:4941/api/v1/films/" + film?.filmId + "/image", selectedImage, movieImageConfig)
+                    await axios.put("https://seng365-reference-production.up.railway.app/api/v1/films/" + film?.filmId + "/image", selectedImage, movieImageConfig)
                 }
                 navigate("/films/" + film?.filmId);
             } catch (error: any) {
@@ -137,7 +137,7 @@ export default function EditFilm() {
                             alignItems: 'center',
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'success.main',width:'60%', height:'10%'  }} alt={film?.title} src={"http://localhost:4941/api/v1/films/" + film?.filmId + "/image"} variant="rounded">
+                        <Avatar sx={{ m: 1, bgcolor: 'success.main',width:'60%', height:'10%'  }} alt={film?.title} src={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film?.filmId + "/image"} variant="rounded">
                         </Avatar>
 
                         <Typography component="h1" variant="h5">

@@ -18,7 +18,7 @@ const PublishGenre = ({ defaultValue }: PublishGenreProps) => {
     }, []);
 
     const getGenres = () => {
-        axios.get("http://localhost:4941/api/v1/films/genres")
+        axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
             .then((response) => {
                 setGenres(response.data);
             });

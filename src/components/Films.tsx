@@ -77,7 +77,7 @@ const Films = () => {
         params.set("startIndex", String(startIndex));
         params.set("count", String(filmsPerPage));
 
-        const url = `http://localhost:4941/api/v1/films?${params.toString()}`;
+        const url = `https://seng365-reference-production.up.railway.app/api/v1/films?${params.toString()}`;
         axios.get(url)
             .then(
                 (response) => {
@@ -95,7 +95,7 @@ const Films = () => {
 
 
     const getGenres = () => {
-        axios.get("http://localhost:4941/api/v1/films/genres")
+        axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
             .then(
                 (response) => {
                     setErrorFlag(false);
@@ -178,7 +178,7 @@ const Films = () => {
                                 height="200"
                                 width="200"
                                 sx={{objectFit: "cover"}}
-                                image={"http://localhost:4941/api/v1/films/" + film.filmId + "/image"}
+                                image={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film.filmId + "/image"}
                                 alt="Auction hero"
                             />
                             <CardContent>
@@ -195,7 +195,7 @@ const Films = () => {
                                         Director: {film.directorFirstName} {film.directorLastName}
                                         <Avatar
                                             alt={film.directorFirstName}
-                                            src={"http://localhost:4941/api/v1/users/" + film.directorId + "/image"}
+                                            src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + film.directorId + "/image"}
                                         />
                                     </Box>
                                 </Typography>

@@ -50,7 +50,7 @@ export default function EditUser() {
     useEffect(() => {
         const checkImageExists = async () => {
             try {
-                const response = await fetch(`http://localhost:4941/api/v1/users/${user?.id}/image`);
+                const response = await fetch(`https://seng365-reference-production.up.railway.app/api/v1/users/${user?.id}/image`);
                 setImageExists(response.ok);
             } catch (error) {
                 setImageExists(false);
@@ -72,7 +72,7 @@ export default function EditUser() {
         try {
             setErrorFlag(false);
             setErrorMessage("");
-            const updateUserInformationResult = await axios.patch("http://localhost:4941/api/v1/users/" + user?.id, {
+            const updateUserInformationResult = await axios.patch("https://seng365-reference-production.up.railway.app/api/v1/users/" + user?.id, {
                 ...(data.get('email') && data.get('email') !== user?.email && { email: data.get('email') }),
                 ...(data.get('firstName') && data.get('firstName') !== user?.firstName && { firstName: data.get('firstName') }),
                 ...(data.get('lastName') && data.get('lastName') !== user?.lastName && { lastName: data.get('lastName') }),
@@ -93,13 +93,13 @@ export default function EditUser() {
             };
 
             if(removeImage) {
-                await axios.delete("http://localhost:4941/api/v1/users/" + user?.id + "/image", userImageDeleteConfig)
+                await axios.delete("https://seng365-reference-production.up.railway.app/api/v1/users/" + user?.id + "/image", userImageDeleteConfig)
             }
             if (selectedImage) {
-                await axios.put("http://localhost:4941/api/v1/users/" + user?.id + "/image", selectedImage, userImageConfig)
+                await axios.put("https://seng365-reference-production.up.railway.app/api/v1/users/" + user?.id + "/image", selectedImage, userImageConfig)
             }
 
-            const userResult = await axios.get("http://localhost:4941/api/v1/users/" + user?.id, userPatchConfig);
+            const userResult = await axios.get("https://seng365-reference-production.up.railway.app/api/v1/users/" + user?.id, userPatchConfig);
             const {data: userInfo} = userResult;
             setUser({...userInfo, id:user?.id, authToken:user?.authToken});
             navigate("/films");
@@ -141,7 +141,7 @@ export default function EditUser() {
                                     selectedImage
                                         ? URL.createObjectURL(selectedImage)
                                         : imageExists
-                                            ? `http://localhost:4941/api/v1/users/${user?.id}/image`
+                                            ? `https://seng365-reference-production.up.railway.app/api/v1/users/${user?.id}/image`
                                             : undefined
                                 }
                             />

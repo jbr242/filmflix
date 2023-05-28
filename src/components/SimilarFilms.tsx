@@ -42,7 +42,7 @@ export default function SimilarFilms({ genreId, directorId, sourceFilmId }: Prop
 
     useEffect(() => {
         const getSimilarFilms = async () => {
-            const url = `http://localhost:4941/api/v1/films/`;
+            const url = `https://seng365-reference-production.up.railway.app/api/v1/films/`;
             const similarFilmsByGenre = await axios.get(url + "?genreIds="+genreId)
             const similarFilmsByDirector = await axios.get(url + "?directorId="+directorId)
 
@@ -50,7 +50,7 @@ export default function SimilarFilms({ genreId, directorId, sourceFilmId }: Prop
 
         }
         const getGenres = () => {
-            axios.get("http://localhost:4941/api/v1/films/genres")
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
                 .then(
                     (response) => {
                         setGenres(response.data);
@@ -95,7 +95,7 @@ export default function SimilarFilms({ genreId, directorId, sourceFilmId }: Prop
                             height="200"
                             width="200"
                             sx={{objectFit: "cover"}}
-                            image={"http://localhost:4941/api/v1/films/" + film.filmId + "/image"}
+                            image={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film.filmId + "/image"}
                             alt="Auction hero"
                         />
                         <CardContent>
@@ -112,7 +112,7 @@ export default function SimilarFilms({ genreId, directorId, sourceFilmId }: Prop
                                     Director: {film.directorFirstName} {film.directorLastName}
                                     <Avatar
                                         alt={film.directorFirstName}
-                                        src={"http://localhost:4941/api/v1/users/" + film.directorId + "/image"}
+                                        src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + film.directorId + "/image"}
                                     />
                                 </Box>
                             </Typography>

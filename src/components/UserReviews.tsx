@@ -26,7 +26,7 @@ export default function UserReviews({ userId }: Props) {
 
     useEffect(() => {
         const getUserReviewedFilms = async () => {
-            const url = `http://localhost:4941/api/v1/films/`;
+            const url = `https://seng365-reference-production.up.railway.app/api/v1/films/`;
 
             try {
                 // Get all films
@@ -50,7 +50,7 @@ export default function UserReviews({ userId }: Props) {
             }
         };
         const getGenres = () => {
-            axios.get("http://localhost:4941/api/v1/films/genres")
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
                 .then(
                     (response) => {
                         setGenres(response.data);
@@ -87,7 +87,7 @@ export default function UserReviews({ userId }: Props) {
 
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar alt={film.title} src={"http://localhost:4941/api/v1/films/" + film.filmId + "/image"} variant="rounded"/>
+                            <Avatar alt={film.title} src={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film.filmId + "/image"} variant="rounded"/>
                         </ListItemAvatar>
                         <ListItemText
                             primary={film.title}
@@ -120,7 +120,7 @@ export default function UserReviews({ userId }: Props) {
                                     <ListItem sx={{ display: 'flex', alignItems: 'left'}}>
                                         <Avatar
                                             alt={film?.directorFirstName}
-                                            src={"http://localhost:4941/api/v1/users/" + film?.directorId + "/image"}
+                                            src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + film?.directorId + "/image"}
                                             sx={{width:'30px', height:'30px'}}
                                         />
                                         <ListItemText sx={{marginLeft:1}}>

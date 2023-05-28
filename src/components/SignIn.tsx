@@ -45,12 +45,12 @@ export default function SignIn() {
         try {
             setErrorFlag(false);
             setErrorMessage("");
-            const loginResult = await axios.post("http://localhost:4941/api/v1/users/login", {
+            const loginResult = await axios.post("https://seng365-reference-production.up.railway.app/api/v1/users/login", {
                 "email": data.get('email'),
                 "password": data.get('password'),
             });
             const {userId} = loginResult.data;
-            const userResult = await axios.get("http://localhost:4941/api/v1/users/" + userId);
+            const userResult = await axios.get("https://seng365-reference-production.up.railway.app/api/v1/users/" + userId);
             const {data: userInfo} = userResult;
             const {token: authToken} = loginResult.data;
             setUser({...userInfo, authToken, id:userId, email:data.get('email')});

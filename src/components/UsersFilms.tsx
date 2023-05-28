@@ -43,9 +43,9 @@ export default function UsersFilms({ userId }: Props) {
             }
         };
         setOpenDialogId(null);
-        await axios.delete(`http://localhost:4941/api/v1/films/` + filmId, movieDeleteConfig);
+        await axios.delete(`https://seng365-reference-production.up.railway.app/api/v1/films/` + filmId, movieDeleteConfig);
         try {
-            const response = await axios.get(`http://localhost:4941/api/v1/films/?directorId=${userId}`);
+            const response = await axios.get(`https://seng365-reference-production.up.railway.app/api/v1/films/?directorId=${userId}`);
             setUserFilms(response.data.films);
         } catch (error) {
             console.log(error);
@@ -55,14 +55,14 @@ export default function UsersFilms({ userId }: Props) {
 
     useEffect(() => {
         const getUserFilms = async () => {
-            const url = `http://localhost:4941/api/v1/films/`;
+            const url = `https://seng365-reference-production.up.railway.app/api/v1/films/`;
             const userFilmsResponse = await axios.get(url + "?directorId="+userId)
 
             setUserFilms(userFilmsResponse.data.films);
 
         }
         const getGenres = () => {
-            axios.get("http://localhost:4941/api/v1/films/genres")
+            axios.get("https://seng365-reference-production.up.railway.app/api/v1/films/genres")
                 .then(
                     (response) => {
                         setGenres(response.data);
@@ -99,7 +99,7 @@ export default function UsersFilms({ userId }: Props) {
 
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar alt={film.title} src={"http://localhost:4941/api/v1/films/" + film.filmId + "/image"} variant="rounded"/>
+                            <Avatar alt={film.title} src={"https://seng365-reference-production.up.railway.app/api/v1/films/" + film.filmId + "/image"} variant="rounded"/>
                         </ListItemAvatar>
                         <ListItemText
                             primary={film.title}
@@ -171,7 +171,7 @@ export default function UsersFilms({ userId }: Props) {
                                     <ListItem sx={{ display: 'flex', alignItems: 'left'}}>
                                         <Avatar
                                             alt={film?.directorFirstName}
-                                            src={"http://localhost:4941/api/v1/users/" + film?.directorId + "/image"}
+                                            src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + film?.directorId + "/image"}
                                             sx={{width:'30px', height:'30px'}}
                                         />
                                         <ListItemText sx={{marginLeft:1}}>

@@ -26,7 +26,7 @@ const Profile = () => {
                     <CardContent sx={{display:'flex', flexDirection:'column', width:'100%', height:'100%', alignItems:'center'}}>
                                 <Avatar
                                     alt={user?.firstName}
-                                    src={"http://localhost:4941/api/v1/users/" + user?.id + "/image"}
+                                    src={"https://seng365-reference-production.up.railway.app/api/v1/users/" + user?.id + "/image"}
                                     sx={{ width: '5vw', height: '5vw', margin:4}}
                                 />
                                 <Typography>

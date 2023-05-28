@@ -16,7 +16,7 @@ const Logout = () => {
 
 
     useEffect(() => {
-        axios.post("http://localhost:4941/api/v1/users/logout",null, userLogoutConfig).then(
+        axios.post("https://seng365-reference-production.up.railway.app/api/v1/users/logout",null, userLogoutConfig).then(
             (response) => {
                 console.log(response)
             },
